@@ -9,7 +9,7 @@ const Database = require( 'better-sqlite3' );
 const Razorpay = require( 'razorpay' );
 
 // Auth deps
-const bcrypt = require( 'bcrypt' );
+const bcrypt = require( 'bcryptjs' );
 const jwt = require( 'jsonwebtoken' );
 const { OAuth2Client } = require( 'google-auth-library' );
 
