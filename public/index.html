@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>True Purity — Water You Can Trust</title>
+    <meta name="description"
+        content="Family-friendly RO purifiers with RO • UV • UF • TDS • Copper • Alkaline. Safe, great-tasting water every day." />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <style>
+        .iso-badge {
+            height: 30px;
+            vertical-align: middle;
+            border-radius: 50%;
+        }
+
+        .iso-footer img {
+            height: 32px;
+        }
+
+        .iso-mini {
+            opacity: .9;
+        }
+
+        .iso-mini img {
+            height: 22px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="assets/logo.png" alt="True Purity" class="me-2"
+                    style="width:40px;height:40px;object-fit:cover;border-radius:8px;">
+                <span class="fw-bold">True Purity</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="howItWorks.html">How It Works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="why-choose-us.html">Why Choose Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#models">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <!-- Auth slot -->
+                    <li class="nav-item" id="authSlot"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="orderPauseBanner" class="site-announcement alert alert-warning rounded-3 shadow-sm mb-0">
+        <div class="d-flex align-items-start gap-3">
+            <i class="bi bi-exclamation-triangle-fill fs-4"></i>
+            <div>
+                <div class="fw-semibold">Online checkout is temporarily unavailable</div>
+                <div class="small mb-2">
+                    To order now, please message us on <b>WhatsApp: +91 8100 1417 14</b> or use the <b>Contact</b> form
+                    below.
+                    Free Water Test requests continue as normal.
+                </div>
+                <a href="https://wa.me/918100141714?text=Hi%20True%20Purity!%20I%20want%20to%20order." target="_blank"
+                    rel="noopener" class="btn btn-success btn-sm me-2">
+                    <i class="bi bi-whatsapp me-1"></i> Order via WhatsApp
+                </a>
+                <a href="#contact" class="btn btn-outline-primary btn-sm">
+                    <i class="bi bi-envelope me-1"></i> Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- HERO -->
+    <header id="home" class="hero section-pad">
+
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="hero-visual reveal"></div>
+                </div>
+                <div class="col-lg-6 order-lg-1 text-lg-start text-center">
+                    <div
+                        class="badge-group d-inline-flex flex-wrap gap-2 mb-3 justify-content-center justify-content-lg-start">
+                        <span class="badge fs-6 px-3 py-2 rounded-pill">
+                            <i class="bi bi-shield-check me-1"></i> 100% Purity. 0% Compromise.
+                        </span>
+                        <span class="badge fs-6 px-3 py-2 rounded-pill">
+                            <i class="bi bi-shield-check me-1"></i>ISO Certified Quality
+                            <img src="assets/iso.png" alt="ISO Certified" class="iso-badge ms-1">
+                        </span>
+                    </div>
+
+                    <h1 class="display-5 fw-bold mb-2">Pure Water, Pure Life</h1>
+                    <h3 class="display-6 fw-bold mb-2"><span class="text-brand-accent">India's Trusted RO Brand</span>
+                    </h3>
+                    <p class="lead hero-sub mb-4">RO • UV • UF • TDS with Copper &amp; Alkaline ~<br> pure, safe, and
+                        great-tasting water for your family.</p>
+                    <div class="d-flex flex-wrap gap-2 justify-content-lg-start justify-content-center">
+                        <a href="#models" class="btn btn-brand btn-lg">See Models</a>
+                        <a href="howItWorks.html" class="btn btn-outline-brand btn-lg">How it Works</a>
+                    </div>
+                    <ul class="list-inline mt-4 small hero-list">
+                        <li class="list-inline-item me-3"><i class="bi bi-geo-alt-fill me-1"></i> Pan-India Service</li>
+                        <li class="list-inline-item me-3"><i class="bi bi-battery-charging me-1"></i> Low Power</li>
+                        <li class="list-inline-item"><i class="bi bi-recycle me-1"></i> Eco-aware Design</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- waves + bubbles -->
+            <svg class="wave-bottom" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+                <path
+                    d="M0,64L60,69.3C120,75,240,85,360,80C480,75,600,53,720,45.3C840,37,960,43,1080,53.3C1200,64,1320,80,1380,88L1440,96V120H0Z" />
+            </svg>
+            <div class="bubbles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- BENEFITS -->
+    <section id="benefits" class="section-pad bg-tint">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-2">What makes True Purity family-friendly</h2>
+                <p class="text-secondary">Comfort, safety, and effortless care—built in.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="tile reveal"><i class="bi bi-droplet"></i>
+                        <h6>Balanced Taste</h6>
+                        <p>Smart TDS control keeps essential minerals for a natural, clean taste.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="tile reveal delay-1"><i class="bi bi-bandaid"></i>
+                        <h6>UV + UF Safety</h6>
+                        <p>Dual protection to neutralize microbes and trap particles.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="tile reveal delay-2"><i class="bi bi-cup-hot"></i>
+                        <h6>Copper &amp; Alkaline</h6>
+                        <p>Helps support immunity, digestion, and a gentle pH balance.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="tile reveal delay-3"><i class="bi bi-hammer"></i>
+                        <h6>Hassle-free Care</h6>
+                        <p>Free install, easy filters, and friendly support when you need it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODELS -->
+    <section id="models" class="section-pad">
+        <div class="container">
+            <div class="d-flex align-items-end justify-content-between mb-3">
+                <h2 class="fw-bold m-0">Models &amp; Pricing</h2>
+                <small class="text-secondary">MRP (incl. taxes)</small>
+            </div>
+            <div id="product-grid" class="row g-4"><!-- injected by script.js --></div>
+            <p class="small text-secondary mt-2">Prices shown are indicative; contact us for seasonal offers.</p>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section-pad bg-tint">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-6">
+                    <div class="media-frame reveal">
+                        <img src="assets/TRUE%20PURITY%20GIRL%20DRINKING.png" alt="Drinking purified water">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-3 reveal">Multi-stage purification</h2>
+                    <div class="steps">
+                        <div class="step reveal"><span>1</span> RO membrane removes heavy metals &amp; dissolved salts
+                        </div>
+                        <div class="step reveal delay-1"><span>2</span> UV disinfects bacteria &amp; viruses</div>
+                        <div class="step reveal delay-2"><span>3</span> UF provides physical safety net</div>
+                        <div class="step reveal delay-3"><span>4</span> TDS control fine-tunes taste &amp; minerals
+                        </div>
+                        <div class="step reveal delay-4"><span>5</span> Copper &amp; Alkaline enrichment</div>
+                    </div>
+                    <a href="#contact" class="btn btn-brand mt-3 reveal delay-4">Get a free water check</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section-pad">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">Trusted by Families Across India</h2>
+                <p class="text-secondary">Real Words from Happy Families</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <blockquote class="quote reveal delay-2">““Affordable price, premium water quality!”
+                        <footer>— Riya, Kolkata</footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-4">
+                    <blockquote class="quote reveal delay-2">“True Purity naam hi sahi, water bilkul pure.”
+                        <footer>— Karan, Siliguri</footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-4">
+                    <blockquote class="quote reveal delay-2">“Best RO in budget, paani ka taste superb.”
+                        <footer>— Jamirul, Bengaluru</footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-4">
+                    <blockquote class="quote reveal delay-2">“Jar se better, yeh RO health ke liye perfect.”
+                        <footer>— Nidhi, Hyderabad</footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-4">
+                    <blockquote class="quote reveal delay-2">“Service on time, maintenance bhi sasta.”
+                        <footer>— Suman, Kolkata</footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-4">
+                    <blockquote class="quote reveal delay-2">“Local RO se strong build aur durable, Maintenance cost
+                        bahut reasonable.”
+                        <footer>— Dev, Punjab</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section-pad">
+        <div class="container">
+            <div class="row g-4 align-items-stretch">
+                <!-- Left: brand + quick CTA -->
+                <div class="col-lg-5">
+                    <div class="contact-card h-100 d-flex flex-column">
+                        <div class="mb-3">
+                            <h3 class="fw-bold mb-1">Talk to True Purity</h3>
+                            <p class="mb-2">Have a question or want a free water test? Send us a quick message.</p>
+                            <ul class="list-unstyled mb-0 small">
+                                <li class="mb-1"><i class="bi bi-telephone me-2"></i><a href="tel:+918100141714">+91
+                                        8100 1417 14</a></li>
+                                <li class="mb-1"><i class="bi bi-envelope me-2"></i><a
+                                        href="mailto:truepuritycare@gmail.com">truepuritycare@gmail.com</a></li>
+                                <li><i class="bi bi-globe me-2"></i><a href="https://truepurity.in" target="_blank"
+                                        rel="noopener">truepurity.in</a></li>
+                            </ul>
+                        </div>
+                        <div class="mt-auto">
+                            <a href="https://wa.me/918100141714" target="_blank" rel="noopener"
+                                class="btn btn-brand btn-lg w-100">
+                                <i class="bi bi-whatsapp me-2"></i>Chat on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: query form -->
+                <div class="col-lg-7">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3">Send a quick query</h5>
+
+                            <form id="queryForm" class="needs-validation" novalidate>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Full name</label>
+                                        <input type="text" name="name" class="form-control" required>
+                                        <div class="invalid-feedback">Please enter your name.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Phone (WhatsApp)</label>
+                                        <input type="tel" name="phone" pattern="[0-9]{10}" class="form-control" required
+                                            placeholder="10-digit mobile">
+                                        <div class="invalid-feedback">Enter a valid 10-digit number.</div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label">City</label>
+                                        <input type="text" name="city" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Interested model</label>
+                                        <select name="model" class="form-select">
+                                            <option value="">Select (optional)</option>
+                                            <option>TP-Prime</option>
+                                            <option>TP-ROYAL</option>
+                                            <option>TP-Elite</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label">Message</label>
+                                        <textarea name="message" rows="3" class="form-control"
+                                            placeholder="Tell us your query or request a free water test…"
+                                            required></textarea>
+                                        <div class="invalid-feedback">Please add a short message.</div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label">Preferred contact</label>
+                                        <div class="d-flex gap-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="pref" value="Call"
+                                                    id="prefCall" checked>
+                                                <label class="form-check-label" for="prefCall">Call</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="pref"
+                                                    value="WhatsApp" id="prefWA">
+                                                <label class="form-check-label" for="prefWA">WhatsApp</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label">Best time</label>
+                                        <select name="time" class="form-select">
+                                            <option value="">Anytime</option>
+                                            <option>Morning</option>
+                                            <option>Afternoon</option>
+                                            <option>Evening</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Honeypot (simple spam trap) -->
+                                    <input type="text" name="company" class="d-none" autocomplete="off">
+
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="agree" required>
+                                            <label class="form-check-label" for="agree">I agree to be contacted for my
+                                                query.</label>
+                                            <div class="invalid-feedback">Please confirm permission to contact.</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 d-grid d-sm-flex gap-2">
+                                        <button class="btn btn-brand btn-lg flex-fill" type="submit">
+                                            <i class="bi bi-send me-1"></i> Send via WhatsApp
+                                        </button>
+                                        <button class="btn btn-outline-brand btn-lg flex-fill" type="button"
+                                            id="emailBtn">
+                                            <i class="bi bi-envelope me-1"></i> Send by Email
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (restored) -->
+    <footer class="py-4 border-top bg-white-70">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 small">
+            <div>© <span id="year"></span> True Purity</div>
+
+            <!-- ISO in footer -->
+            <div class="iso-footer d-flex align-items-center gap-2">
+                <img src="assets/iso.png" alt="ISO Certified">
+                <span>ISO 9001:2015 Certified – Quality You Can Trust</span>
+            </div>
+
+            <div>
+                <a class="text-decoration-none me-2" href="#models">Pricing</a> •
+                <a class="text-decoration-none ms-2" href="#how">How it works</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- One Account modal (Login / Register / Forgot) -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs mb-3">
+                        <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab"
+                                data-bs-target="#tabLogin" type="button">Login</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabRegister"
+                                type="button">Register</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabForgot"
+                                type="button">Forgot</button></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <!-- Login -->
+                        <div class="tab-pane fade show active" id="tabLogin">
+                            <form id="loginForm" class="vstack gap-2">
+                                <input class="form-control" name="email" placeholder="Email" required>
+                                <input class="form-control" name="password" placeholder="Password" type="password"
+                                    required>
+                                <button class="btn btn-primary" type="submit">Login</button>
+                                <div class="text-center text-secondary mt-2">or</div>
+                                <div id="gLogin" class="mt-2"></div>
+                                <div id="loginMsg" class="small text-danger"></div>
+                            </form>
+                        </div>
+
+                        <!-- Register -->
+                        <div class="tab-pane fade" id="tabRegister">
+                            <form id="regForm" class="vstack gap-2">
+                                <input class="form-control" name="name" placeholder="Full Name" required>
+                                <input class="form-control" name="email" placeholder="Email" type="email" required>
+                                <input class="form-control" name="phone" placeholder="Mobile Number" pattern="[0-9]{10}"
+                                    required>
+                                <input class="form-control" name="city" placeholder="City" required>
+                                <input class="form-control" name="address" placeholder="Full Address" required>
+                                <input class="form-control" name="password" placeholder="Password" type="password"
+                                    required>
+                                <input class="form-control" name="confirm_password" placeholder="Confirm Password"
+                                    type="password" required>
+                                <button class="btn btn-success" type="submit">Create Account</button>
+
+                                <div class="text-center text-secondary mt-2">or</div>
+                                <div id="gRegister" class="mt-2"></div>
+
+                                <div id="regMsg" class="small text-danger"></div>
+                            </form>
+                        </div>
+
+                        <!-- Forgot -->
+                        <div class="tab-pane fade" id="tabForgot">
+                            <form id="forgotForm" class="vstack gap-2">
+                                <input class="form-control" name="email" placeholder="Your email" required>
+                                <button class="btn btn-warning" type="submit">Send reset link</button>
+                                <div id="forgotMsg" class="small"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Your product grid / other page logic -->
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Auth / Google logic -->
+    <script>
+        ( function ()
+        {
+            const API = 'http://localhost:3001'; // Node server
+            const GCID = '906828654671-3na13701tjvag0900lrurr7mj2lqonl6.apps.googleusercontent.com'; // <-- put exact Client ID
+
+            // Navbar slot (Login / Orders / Logout)
+            const slot = document.getElementById( 'authSlot' );
+            slot.innerHTML = `
+        <a id="navLogin"  class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#authModal">Login</a>
+        <a id="navOrders" class="nav-link d-none" href="orders.html">My Orders</a>
+        <a id="navLogout" class="nav-link d-none" href="#">Logout</a>
+      `;
+
+            // Token helpers
+            const tokenKey = 'tp_token';
+            const setToken = ( t ) => localStorage.setItem( tokenKey, t );
+            const getToken = () => localStorage.getItem( tokenKey );
+            const clearToken = () => localStorage.removeItem( tokenKey );
+            const authHeader = () => ( getToken() ? { Authorization: 'Bearer ' + getToken() } : {} );
+
+            // Navbar UI
+            function showLoggedInUI ()
+            {
+                document.getElementById( 'navLogin' ).classList.add( 'd-none' );
+                document.getElementById( 'navOrders' ).classList.remove( 'd-none' );
+                document.getElementById( 'navLogout' ).classList.remove( 'd-none' );
+            }
+            function showLoggedOutUI ()
+            {
+                document.getElementById( 'navLogin' ).classList.remove( 'd-none' );
+                document.getElementById( 'navOrders' ).classList.add( 'd-none' );
+                document.getElementById( 'navLogout' ).classList.add( 'd-none' );
+            }
+
+            async function refreshMe ()
+            {
+                try
+                {
+                    const r = await fetch( API + '/api/auth/me', { headers: { ...authHeader() } } );
+                    const j = await r.json();
+                    if ( j.ok ) { showLoggedInUI(); return; }
+                } catch { }
+                showLoggedOutUI();
+            }
+
+            // Email/password: Login
+            document.addEventListener( 'submit', async ( e ) =>
+            {
+                if ( e.target.id !== 'loginForm' ) return;
+                e.preventDefault();
+                const body = Object.fromEntries( new FormData( e.target ).entries() );
+                const out = document.getElementById( 'loginMsg' ); out.textContent = '';
+                try
+                {
+                    const r = await fetch( API + '/api/auth/login', {
+                        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify( body )
+                    } );
+                    const j = await r.json();
+                    if ( !r.ok ) { out.textContent = j.error || 'Login failed'; return; }
+                    setToken( j.token ); await refreshMe();
+                    bootstrap.Modal.getInstance( document.getElementById( 'authModal' ) )?.hide();
+                } catch { out.textContent = 'Network error'; }
+            } );
+
+            // Email/password: Register (email verification message)
+            document.addEventListener( 'submit', async ( e ) =>
+            {
+                if ( e.target.id !== 'regForm' ) return;
+                e.preventDefault();
+                const body = Object.fromEntries( new FormData( e.target ).entries() );
+                const out = document.getElementById( 'regMsg' ); out.textContent = ''; out.classList.remove( 'text-success' ); out.classList.add( 'text-danger' );
+                try
+                {
+                    const r = await fetch( API + '/api/auth/register', {
+                        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify( body )
+                    } );
+                    const j = await r.json();
+                    if ( !r.ok ) { out.textContent = j.error || 'Registration failed'; return; }
+                    out.classList.remove( 'text-danger' ); out.classList.add( 'text-success' );
+                    out.textContent = j.verify_url ? ( 'Check your email for a verification link. (Dev: ' + j.verify_url + ')' )
+                        : 'Check your email for a verification link.';
+                } catch { out.textContent = 'Network error'; }
+            } );
+
+            // Forgot
+            document.addEventListener( 'submit', async ( e ) =>
+            {
+                if ( e.target.id !== 'forgotForm' ) return;
+                e.preventDefault();
+                const body = Object.fromEntries( new FormData( e.target ).entries() );
+                const out = document.getElementById( 'forgotMsg' ); out.textContent = '';
+                try
+                {
+                    const r = await fetch( API + '/api/auth/forgot', {
+                        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify( body )
+                    } );
+                    const j = await r.json();
+                    out.textContent = j.reset_url ? ( 'Reset link (dev): ' + j.reset_url )
+                        : 'If this email exists, a reset link will be sent.';
+                } catch { out.textContent = 'Network error'; }
+            } );
+
+            // Google Identity Services (Login + Register)
+            function renderGoogleButtons ()
+            {
+                if ( !window.google?.accounts?.id || !GCID ) return;
+                google.accounts.id.initialize( {
+                    client_id: GCID,
+                    callback: async ( resp ) =>
+                    {
+                        try
+                        {
+                            const r = await fetch( API + '/api/auth/google', {
+                                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify( { id_token: resp.credential } )
+                            } );
+                            const j = await r.json();
+                            if ( !r.ok || !j.ok ) { alert( j.error || 'Google sign-in failed' ); return; }
+                            setToken( j.token ); await refreshMe();
+                            bootstrap.Modal.getInstance( document.getElementById( 'authModal' ) )?.hide();
+                        } catch { alert( 'Network error' ); }
+                    }
+                } );
+                const opts = { theme: 'outline', size: 'large', type: 'standard', shape: 'rectangular', text: 'signin_with' };
+                const gLogin = document.getElementById( 'gLogin' );
+                const gRegister = document.getElementById( 'gRegister' );
+                if ( gLogin ) google.accounts.id.renderButton( gLogin, opts );
+                if ( gRegister ) google.accounts.id.renderButton( gRegister, opts );
+            }
+
+            // Re-render Google buttons when tabs switch
+            document.addEventListener( 'shown.bs.tab', ( ev ) =>
+            {
+                const t = ev.target?.getAttribute( 'data-bs-target' );
+                if ( t === '#tabRegister' || t === '#tabLogin' ) renderGoogleButtons();
+            } );
+
+            // Logout
+            document.getElementById( 'navLogout' ).addEventListener( 'click', ( e ) =>
+            {
+                e.preventDefault(); clearToken(); showLoggedOutUI();
+            } );
+
+            // Init
+            document.getElementById( 'year' ).textContent = new Date().getFullYear();
+            refreshMe();
+            if ( document.readyState === 'complete' ) renderGoogleButtons();
+            else window.addEventListener( 'load', renderGoogleButtons );
+        } )();
+    </script>
+</body>
+
+</html>

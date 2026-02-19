@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Why Choose Us • True Purity</title>
+    <meta name="description"
+        content="Why families across India choose True Purity: certified technology, free trial, affordable rentals, and fast support." />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+
+    <style>
+        /* Product-card pricing polish */
+        .product-card .price {
+            display: flex;
+            align-items: baseline;
+            gap: .6rem;
+            margin: .35rem 0 1rem;
+        }
+
+        .product-card .price .offer {
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .product-card .price .mrp {
+            font-size: .95rem;
+            color: var(--bs-secondary);
+        }
+
+        .product-card .price .perks {
+            font-size: .85rem;
+            color: var(--bs-success);
+        }
+
+        .product-card .discount-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--bs-danger);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: .25rem .55rem;
+            font-size: .8rem;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
+        }
+
+        .product-card .model-img {
+            object-fit: contain;
+            height: 180px;
+        }
+
+        @media (min-width: 992px) {
+            .product-card .model-img {
+                height: 200px;
+            }
+        }
+
+        /* Service/offer badge */
+        .service-badge {
+            background: linear-gradient(160deg, #2d74ff 0%, #1a57e6 100%);
+            color: #fff;
+            border-radius: 14px;
+            padding: 8px 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 6px 18px rgba(26, 87, 230, .25);
+        }
+
+        .service-badge .drop {
+            width: 28px;
+            height: 28px;
+            border-radius: 50% 50% 55% 55% / 45% 45% 60% 60%;
+            background: #fff;
+            color: #1a57e6;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: .9rem;
+            line-height: 1;
+        }
+
+        .service-badge small {
+            display: block;
+            font-weight: 500;
+            opacity: .95;
+            line-height: 1.15;
+        }
+
+        /* “tick” list look clean */
+        .card-body ul li i.bi-check2 {
+            color: #1a57e6;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV (reuse your existing nav classes/brand) -->
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="assets/logo.png" alt="True Purity" class="me-2"
+                    style="width:40px;height:40px;object-fit:cover;border-radius:8px;">
+                <span class="fw-bold">True Purity</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="howItWorks.html">How It Works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#models">Products</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="why-choose-us.html">Why
+                            Choose Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                    <!-- keep your auth slot if you render it here: -->
+                    <li class="nav-item" id="authSlot"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- HERO -->
+    <header class="section-pad hero text-center text-white" style="
+    padding-top:7rem;
+    background: rgba(13, 59, 102, .88);
+    color: white;">
+
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-3">
+                Why Choose <span class="text-warning">True Purity</span>
+            </h1>
+            <p class="lead mb-4">
+                India’s trusted RO brand for safe, great-tasting water —
+                backed by certified technology, caring support, and easy ownership plans.
+            </p>
+
+            <div class="row justify-content-center text-start">
+                <div class="col-md-6">
+                    <ul class="list-unstyled fs-5">
+                        <li class="mb-3"><i class="bi bi-shield-check text-warning me-2"></i>
+                            100% Purity. 0% Compromise</li>
+                        <li class="mb-3"><i class="bi bi-droplet-half text-warning me-2"></i>
+                            Copper & Alkaline Enrichment – immunity & pH balance</li>
+                        <li class="mb-3"><i class="bi bi-lightning-charge text-warning me-2"></i>
+                            Energy-efficient & eco-aware design</li>
+                        <li class="mb-3"><i class="bi bi-people text-warning me-2"></i>
+                            Trusted by families across India</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 justify-content-center mt-4">
+                <a href="index.html#models" class="btn btn-light btn-lg text-primary fw-bold">
+                    <i class="bi bi-grid me-1"></i> See Models
+                </a>
+                <a href="index.html#contact" class="btn btn-outline-light btn-lg">
+                    <i class="bi bi-whatsapp me-1"></i> Free Water Check
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- REASONS -->
+    <section class="section-pad bg-tint">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">What makes us different</h2>
+                <p class="text-secondary">Top reasons customers pick True Purity.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="tile h-100">
+                        <i class="bi bi-award"></i>
+                        <h6>ISO Certified Technology</h6>
+                        <p>Industry-standard quality you can trust in every drop.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="tile h-100">
+                        <i class="bi bi-emoji-smile"></i>
+                        <h6>10-Day Free Trial</h6>
+                        <p>Try it at home—love the taste before you commit.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="tile h-100">
+                        <i class="bi bi-tools"></i>
+                        <h6>Quick Lifetime Service</h6>
+                        <p>Fast help when you need it, plus hassle-free care after installation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="tile h-100">
+                        <i class="bi bi-cash-coin"></i>
+                        <h6>Affordable Rental & EMI</h6>
+                        <p>Keep costs light with monthly rental or EMI options—perfect for families.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="tile h-100">
+                        <i class="bi bi-droplet-half"></i>
+                        <h6>9-Stage Purification</h6>
+                        <p>Comprehensive protection with RO • UV • UF • TDS • Copper • (Alkaline in Elite).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="tile h-100">
+                        <i class="bi bi-lightning-charge"></i>
+                        <h6>Smart, Durable Design</h6>
+                        <p>Food-grade ABS body, power-saving UV LED, auto on/off—wall or table-top.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RENTAL PLANS -->
+    <section class="section-pad">
+        <div class="container">
+            <div class="d-flex align-items-end justify-content-between mb-3">
+                <h2 class="fw-bold m-0">Easy Monthly Rental Plans</h2>
+                <small class="text-secondary">Deposits are refundable</small>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Model</th>
+                            <th>Deposit (₹)</th>
+                            <th>Monthly Rent (₹)</th>
+                            <th>Monthly Advance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TP-Prime</td>
+                            <td>1000</td>
+                            <td>299</td>
+                            <td>Minimum 3 Months</td>
+                        </tr>
+                        <tr>
+                            <td>TP-Royal</td>
+                            <td>1500</td>
+                            <td>399</td>
+                            <td>Minimum 1 Month</td>
+                        </tr>
+                        <tr>
+                            <td>TP-Elite</td>
+                            <td>2000</td>
+                            <td>499</td>
+                            <td>Minimum 1 Month</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODEL HIGHLIGHTS -->
+    <section class="section-pad bg-tint">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">Pick the right model for your home</h2>
+                <p class="text-secondary">Quick highlights at a glance.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- TP-Prime -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="assets/TP- PRIME CABIN.png" class="card-img-top p-3" alt="TP-Prime Classic">
+                        <div class="card-body">
+                            <h5 class="card-title mb-1">TP-Prime (Classic)</h5>
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <div class="h5 m-0 text-danger">₹6,000</div>
+                                <div class="text-secondary text-decoration-line-through small">₹11,999</div>
+                                <span class="badge bg-success-subtle text-success fw-semibold">50% OFF</span>
+                            </div>
+                            <ul class="list-unstyled small mb-3">
+                                <li><i class="bi bi-check2 me-1"></i>Storage: 12 L • ~15 L/hr</li>
+                                <li><i class="bi bi-check2 me-1"></i>7-Stage: RO + UV LED + Basic UF + Copper + Minerals
+                                </li>
+                                <li><i class="bi bi-check2 me-1"></i>Best value for small families</li>
+                                <!-- Highlights from image -->
+                                <li><i class="bi bi-check2 me-1"></i>Food-grade ABS body – stylish & durable</li>
+                                <li><i class="bi bi-check2 me-1"></i>Fully automatic operation – Auto On/Off</li>
+                                <li><i class="bi bi-check2 me-1"></i>Power saving UV LED</li>
+                                <li><i class="bi bi-check2 me-1"></i>Wall-mountable / table-top design</li>
+                                <li><i class="bi bi-check2 me-1"></i>Best Value for Money For Small Family</li>
+                            </ul>
+
+                            <!-- Service badge (from droplet text) -->
+                            <div class="service-badge mb-3">
+                                <span class="drop">1</span>
+                                <div>
+                                    1 YEAR FREE SERVICE
+                                    <small>* 6 Month Warranty • 6 Month No Service Charge</small>
+                                </div>
+                            </div>
+
+                            <!-- <div class="d-grid">
+                                <a href="order.html?model=TP-Prime" class="btn btn-brand btn-lg">
+                                    <i class="bi bi-bag-check me-1"></i> Order Now
+                                </a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TP-Royal -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="assets/TP- ROYAL BLACK TRASPARENT.png" class="card-img-top p-3"
+                            alt="TP-Royal Premium">
+                        <div class="card-body">
+                            <h5 class="card-title mb-1">TP-Royal (Premium)</h5>
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <div class="h5 m-0 text-danger">₹9,594</div>
+                                <div class="text-secondary text-decoration-line-through small">₹15,990</div>
+                                <span class="badge bg-success-subtle text-success fw-semibold">40% OFF</span>
+                            </div>
+                            <ul class="list-unstyled small mb-3">
+                                <li><i class="bi bi-check2 me-1"></i>Storage: 12 L • ~18 L/hr</li>
+                                <li><i class="bi bi-check2 me-1"></i>9-Stage: RO + UV LED + UF + TDS + Copper + Minerals
+                                </li>
+                                <li><i class="bi bi-check2 me-1"></i>TDS controller for balanced taste & minerals</li>
+                                <!-- Highlights from image -->
+                                <li><i class="bi bi-check2 me-1"></i>Food-grade ABS body – stylish & durable</li>
+                                <li><i class="bi bi-check2 me-1"></i>Fully automatic operation – Auto On/Off</li>
+                                <li><i class="bi bi-check2 me-1"></i>Power saving UV LED</li>
+                                <li><i class="bi bi-check2 me-1"></i>Wall-mountable / table-top design</li>
+                                <li><i class="bi bi-check2 me-1"></i>Ideal for Medium Families
+                                </li>
+                            </ul>
+
+                            <div class="service-badge mb-3">
+                                <span class="drop">2</span>
+                                <div>
+                                    2 YEARS FREE SERVICE
+                                    <small>* 1 Year Warranty • 1 Year Free Service • Lifetime Technician Support</small>
+                                </div>
+                            </div>
+
+                            <!-- <div class="d-grid">
+                                <a href="order.html?model=TP-Royal" class="btn btn-brand btn-lg">
+                                    <i class="bi bi-bag-check me-1"></i> Order Now
+                                </a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TP-Elite -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="assets/TP-ELITE   WHITE.png" class="card-img-top p-3" alt="TP-Elite Ultra Premium">
+                        <div class="card-body">
+                            <h5 class="card-title mb-1">TP-Elite (Ultra Premium)</h5>
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <div class="h5 m-0 text-danger">₹14,394</div>
+                                <div class="text-secondary text-decoration-line-through small">₹23,990</div>
+                                <span class="badge bg-success-subtle text-success fw-semibold">40% OFF</span>
+                            </div>
+                            <ul class="list-unstyled small mb-3">
+                                <li><i class="bi bi-check2 me-1"></i>Storage: 15 L • ~20 L/hr</li>
+                                <li><i class="bi bi-check2 me-1"></i>9-Stage: RO + UV LED + UF + TDS + Copper + Alkaline
+                                    Boost</li>
+                                <li><i class="bi bi-check2 me-1"></i>Alkaline water + Copper + Minerals = triple support
+                                </li>
+                                <!-- Highlights from image -->
+                                <li><i class="bi bi-check2 me-1"></i>Food-grade ABS body – stylish & durable</li>
+                                <li><i class="bi bi-check2 me-1"></i>Fully automatic operation – Auto On/Off</li>
+                                <li><i class="bi bi-check2 me-1"></i>Power saving UV LED</li>
+                                <li><i class="bi bi-check2 me-1"></i>Wall-mountable / table-top design</li>
+                                <li><i class="bi bi-check2 me-1"></i>Perfect for Large Families & Health-Conscious Users
+                                </li>
+                            </ul>
+
+                            <div class="service-badge mb-3">
+                                <span class="drop">3</span>
+                                <div>
+                                    3 YEARS FREE SERVICE
+                                    <small>* 1 Year Warranty • 2 Years No Service Charge</small>
+                                </div>
+                            </div>
+
+                            <!-- <div class="d-grid">
+                                <a href="order.html?model=TP-Elite" class="btn btn-brand btn-lg">
+                                    <i class="bi bi-bag-check me-1"></i> Order Now
+                                </a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="text-center mt-4">
+                    <a href="index.html#models" class="btn btn-brand btn-lg">Compare Full Specs</a>
+                </div>
+            </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <section class="py-4 bg-white-70 border-top border-bottom">
+        <div class="container">
+            <div class="row text-center small gy-2">
+                <div class="col-6 col-md-3"><i class="bi bi-truck me-1"></i> Free Installation & Pre-Filter.</div>
+                <div class="col-6 col-md-3"><i class="bi bi-shield-check me-1"></i> Quality-checked & food-grade build.
+                </div>
+                <div class="col-6 col-md-3"><i class="bi bi-battery-charging me-1"></i> Power-saving UV LED.</div>
+                <div class="col-6 col-md-3"><i class="bi bi-people me-1"></i> Trusted by families across India.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-pad">
+        <div class="container text-center">
+            <h3 class="fw-bold mb-2">Ready for better water?</h3>
+            <p class="text-secondary">Book a free water check or start a 10-day trial today.</p>
+            <div class="d-flex justify-content-center gap-2">
+                <a href="index.html#contact" class="btn btn-brand btn-lg"><i class="bi bi-calendar2-check me-1"></i>
+                    Free Water Check</a>
+                <a href="index.html#models" class="btn btn-outline-brand btn-lg"><i class="bi bi-bag-check me-1"></i>
+                    Explore Models</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (use your existing footer styles/ISO line) -->
+    <footer class="py-4 border-top bg-white-70">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 small">
+            <div>© <span id="year"></span> True Purity</div>
+            <div class="d-flex align-items-center gap-2">
+                <img src="assets/iso.png" alt="ISO Certified" style="height:32px;">
+                <span>ISO 9001:2015 Certified – Quality You Can Trust</span>
+            </div>
+            <div>
+                <a class="text-decoration-none me-2" href="index.html#models">Pricing</a> •
+                <a class="text-decoration-none ms-2" href="howItWorks.html">How it works</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Fill "-xx%" into any .discount-badge with data-mrp and data-price
+        document.querySelectorAll( '.discount-badge' ).forEach( el =>
+        {
+            const mrp = Number( el.getAttribute( 'data-mrp' ) || 0 );
+            const price = Number( el.getAttribute( 'data-price' ) || 0 );
+            const pct = mrp > 0 ? Math.round( ( 1 - price / mrp ) * 100 ) : 0;
+            el.textContent = pct > 0 ? `-${ pct }%` : '';
+        } );
+    </script>
+
+    <script>
+        // footer year
+        document.getElementById( 'year' ).textContent = new Date().getFullYear();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- If you inject auth UI via JS on other pages, you can load your auth script here too -->
+    <!-- <script src="auth.js"></script> -->
+</body>
+
+</html>

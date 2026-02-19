@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How It Works — True Purity</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Site styles -->
+    <link href="./style.css" rel="stylesheet">
+
+    <!-- Page‑scoped styles -->
+    <style>
+        /* Page hero */
+        .hiw-hero {
+            padding: 120px 0 40px;
+            background:
+                radial-gradient(800px 420px at 110% -10%, color-mix(in srgb, var(--brand-aqua) 10%, #fff) 0%, transparent 60%),
+                radial-gradient(680px 360px at -10% 0%, color-mix(in srgb, var(--brand-aqua) 16%, #fff) 0%, transparent 62%),
+                linear-gradient(180deg, #F0FAFF 0%, #FFFFFF 100%);
+        }
+
+        .hiw-hero h1 {
+            color: var(--brand-blue);
+        }
+
+        /* Process rows */
+        .process-row {
+            background: #fff;
+            border: 1px solid rgba(10, 37, 64, .06);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 12px 30px rgba(7, 55, 115, .08);
+        }
+
+        .process-media {
+            aspect-ratio: 4 / 3;
+            border-radius: 14px;
+            overflow: hidden;
+            background: linear-gradient(180deg, #E6F4FF 0%, #D9EFFF 100%);
+            display: grid;
+            place-items: center;
+        }
+
+        .process-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* show full illustration */
+        }
+
+        .process-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: rgba(31, 182, 255, .12);
+            border: 1px solid rgba(31, 182, 255, .25);
+            color: var(--brand-blue);
+            padding: .35rem .7rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: .9rem;
+        }
+
+        .process-lead {
+            color: #2a3b4a;
+        }
+
+        .why {
+            background: rgba(232, 248, 255, .55);
+            border: 1px dashed rgba(10, 37, 64, .12);
+            border-radius: 12px;
+            padding: 12px 14px;
+        }
+
+        /* small “step number” chip */
+        .step-chip {
+            display: inline-grid;
+            place-items: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--aqua-16);
+            color: var(--brand-blue);
+            font-weight: 700;
+            box-shadow: 0 6px 18px rgba(7, 55, 115, .14);
+            margin-right: .5rem;
+        }
+
+        /* CTA band */
+        .cta-band {
+            background: linear-gradient(135deg, var(--brand-deep) 0%, #1470b3 100%);
+            color: #fff;
+            border-radius: 18px;
+        }
+
+        /* mobile tweaks */
+        @media (max-width: 991.98px) {
+            .hiw-hero {
+                padding-top: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV (re‑uses your site navbar styles) -->
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="assets/logo.png" alt="True Purity" class="me-2"
+                    style="width:40px;height:40px;object-fit:cover;border-radius:8px;">
+                <span class="fw-bold">True Purity</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="nav" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="howItWorks.html">How It Works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="why-choose-us.html">Why Choose Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#models">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hiw-hero">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-7">
+                    <h1 class="fw-bold mb-2">Multi‑Stage Purification, Explained</h1>
+                    <p class="lead">See how True Purity delivers safe, balanced, great‑tasting water through a proven
+                        6‑stage process.</p>
+                    <div class="d-flex flex-wrap gap-2 mt-2">
+                        <span class="process-badge"><i class="bi bi-shield-check"></i> 100% Purity</span>
+                        <span class="process-badge"><i class="bi bi-droplet"></i> Balanced Taste</span>
+                        <span class="process-badge"><i class="bi bi-award"></i> ISO Certified</span>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="process-media">
+                        <!-- A banner/illustration for the page (optional) -->
+                        <img src="assets/Your paragraph text (7).png" alt="Purification flow"
+                            onerror="this.style.opacity='0'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PROCESS SECTIONS -->
+    <main class="py-5">
+        <div class="container">
+
+            <!-- 1. RO -->
+            <div class="process-row mb-4">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-5">
+                        <div class="process-media">
+                            <img src="assets/ro.png" alt="RO membrane"
+                                onerror="this.src='assets/steps/placeholder-ro.svg'">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="mb-1"><span class="step-chip">1</span> RO (Reverse Osmosis)</h3>
+                        <p class="process-lead mb-2"><strong>How it works:</strong> High‑precision RO membrane removes
+                            heavy metals,
+                            harmful impurities, and dissolved salts.</p>
+                        <div class="why mt-2">
+                            <strong>Why it’s good:</strong> Delivers clean, safe water free from dangerous contaminants.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. UV -->
+            <div class="process-row mb-4">
+                <div class="row g-4 align-items-center flex-md-row-reverse">
+                    <div class="col-md-5">
+                        <div class="process-media">
+                            <img src="assets/uv.png" alt="UV disinfection"
+                                onerror="this.src='assets/steps/placeholder-uv.svg'">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="mb-1"><span class="step-chip">2</span> UV (Ultraviolet)</h3>
+                        <p class="process-lead mb-2"><strong>How it works:</strong> UV light neutralizes bacteria and
+                            viruses—no chemicals required.</p>
+                        <div class="why mt-2">
+                            <strong>Why it’s good:</strong> Adds a microbiological safety layer while preserving natural
+                            taste.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. UF -->
+            <div class="process-row mb-4">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-5">
+                        <div class="process-media">
+                            <img src="assets/uf.png" alt="UF filtration"
+                                onerror="this.src='assets/steps/placeholder-uf.svg'">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="mb-1"><span class="step-chip">3</span> UF (Ultrafiltration)</h3>
+                        <p class="process-lead mb-2"><strong>How it works:</strong> UF traps fine particles and cysts
+                            while
+                            allowing beneficial minerals to pass.</p>
+                        <div class="why mt-2">
+                            <strong>Why it’s good:</strong> Safe water even during low‑pressure or power‑cut conditions.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. TDS -->
+            <div class="process-row mb-4">
+                <div class="row g-4 align-items-center flex-md-row-reverse">
+                    <div class="col-md-5">
+                        <div class="process-media">
+                            <img src="assets/tds.png" alt="TDS control"
+                                onerror="this.src='assets/steps/placeholder-tds.svg'">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="mb-1"><span class="step-chip">4</span> TDS (Total Dissolved Solids) Control</h3>
+                        <p class="process-lead mb-2"><strong>How it works:</strong> Smart TDS adjustment balances salts
+                            and minerals for taste.</p>
+                        <div class="why mt-2">
+                            <strong>Why it’s good:</strong> Perfect, consistent taste that’s just right for health.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Copper -->
+            <div class="process-row mb-4">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-5">
+                        <div class="process-media">
+                            <img src="assets/copper.png" alt="Copper enrichment"
+                                onerror="this.src='assets/steps/placeholder-copper.svg'">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="mb-1"><span class="step-chip">5</span> Copper Enrichment</h3>
+                        <p class="process-lead mb-2"><strong>How it works:</strong> Adds copper traces, known for
+                            supporting good health.</p>
+                        <div class="why mt-2">
+                            <strong>Why it’s good:</strong> Supports immunity and natural wellness.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Alkaline -->
+            <div class="process-row mb-5">
+                <div class="row g-4 align-items-center flex-md-row-reverse">
+                    <div class="col-md-5">
+                        <div class="process-media">
+                            <img src="assets/alkaline.png" alt="Alkaline balance"
+                                onerror="this.src='assets/steps/placeholder-alkaline.svg'">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="mb-1"><span class="step-chip">6</span> Alkaline Balance</h3>
+                        <p class="process-lead mb-2"><strong>How it works:</strong> Adjusts water pH for reduced acidity
+                            and smoother taste.</p>
+                        <div class="why mt-2">
+                            <strong>Why it’s good:</strong> Promotes better hydration, digestion, and overall balance.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-band p-4 d-flex flex-column flex-lg-row align-items-center justify-content-between gap-3">
+                <div>
+                    <h4 class="fw-bold mb-1">Want to see which model fits your TDS best?</h4>
+                    <p class="mb-0">Request a free water test and get a personalized recommendation.</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="index.html#models" class="btn btn-light">See Models</a>
+                    <a href="index.html#contact" class="btn btn-outline-light"><i class="bi bi-send me-1"></i>Free Water
+                        Test</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-4 border-top bg-white-70">
+        <div class="container d-flex flex-column flex-md-row justify-content-between gap-3 small">
+            <div>© <span id="y"></span> True Purity</div>
+            <div><a class="text-decoration-none me-2" href="index.html#models">Pricing</a> •
+                <a class="text-decoration-none ms-2" href="#">How it works</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById( 'y' ).textContent = new Date().getFullYear();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

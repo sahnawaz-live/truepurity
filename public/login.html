@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Login • True Purity</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+
+<body class="bg-light d-flex align-items-center" style="min-height:100vh;">
+    <div class="container" style="max-width:460px;">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h4 class="fw-bold mb-3 text-center">Welcome back</h4>
+
+                <form id="loginForm" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input class="form-control" name="email" type="email" required>
+                        <div class="invalid-feedback">Enter a valid email.</div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Password</label>
+                        <input class="form-control" name="password" type="password" minlength="6" required>
+                        <div class="invalid-feedback">Enter your password.</div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <a class="small" href="forgot.html">Forgot password?</a>
+                        <a class="small" href="register.html">Create account</a>
+                    </div>
+                    <button class="btn btn-primary w-100" type="submit">
+                        <i class="bi bi-box-arrow-in-right me-1"></i> Login
+                    </button>
+                </form>
+
+                <div class="text-center text-muted my-3">or</div>
+
+                <!-- Google Sign-In button (requires GOOGLE_CLIENT_ID) -->
+                <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+                    data-context="signin" data-ux_mode="popup" data-callback="onGoogleCredential"
+                    data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"
+                    data-text="signin_with" data-shape="rect" data-logo_alignment="left"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API = window.location.origin;
+        const TOKEN_KEY = 'tp_token';
+
+        function setToken ( t ) { localStorage.setItem( TOKEN_KEY, t ); }
+        function redirectAfterLogin ()
+        {
+            // go home or to where user came from
+            location.href = 'index.html';
+        }
+
+        // Email/password login
+        const form = document.getElementById( 'loginForm' );
+        form.addEventListener( 'submit', async ( e ) =>
+        {
+            e.preventDefault();
+            if ( !form.checkValidity() ) { form.classList.add( 'was-validated' ); return; }
+            const fd = new FormData( form );
+            const payload = { email: fd.get( 'email' ).trim(), password: fd.get( 'password' ) };
+
+            try
+            {
+                const r = await fetch( `${ API }/api/auth/login`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify( payload )
+                } );
+                const data = await r.json();
+                if ( !r.ok ) { alert( data?.error || 'Login failed' ); return; }
+                setToken( data.token );
+                redirectAfterLogin();
+            } catch ( err )
+            {
+                console.error( err ); alert( 'Network error' );
+            }
+        } );
+
+        // Google OAuth (One Tap / button)
+        window.onGoogleCredential = async ( { credential } ) =>
+        {
+            try
+            {
+                const r = await fetch( `${ API }/api/auth/google`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify( { credential } )
+                } );
+                const data = await r.json();
+                if ( !r.ok ) { alert( data?.error || 'Google sign-in failed' ); return; }
+                setToken( data.token );
+                redirectAfterLogin();
+            } catch ( err )
+            {
+                console.error( err ); alert( 'Network error' );
+            }
+        };
+    </script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</body>
+
+</html>

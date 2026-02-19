@@ -1,0 +1,477 @@
+:root {
+    --brand-blue: #0A2540;
+    --brand-deep: #0D3B66;
+    --brand-aqua: #1FB6FF;
+    --text: #1b2b3a;
+    --aqua-10: color-mix(in srgb, var(--brand-aqua) 10%, #fff);
+    --aqua-16: color-mix(in srgb, var(--brand-aqua) 16%, #fff);
+}
+
+html, body {
+    height: 100%
+}
+
+body {
+    color: var(--text);
+    background:
+        radial-gradient(800px 420px at 110% -10%, var(--aqua-10) 0%, transparent 60%),
+        radial-gradient(680px 360px at -10% 0%, var(--aqua-16) 0%, transparent 62%),
+        linear-gradient(180deg, #F0FAFF 0%, #FFFFFF 100%);
+    background-attachment: fixed;
+}
+
+
+/* Adjust if your navbar is taller/shorter */
+:root {
+    --nav-h: 64px;
+}
+
+/* Reserve space for the fixed navbar */
+body {
+    padding-top: var(--nav-h);
+}
+
+/* If your announcement bar is position:sticky or fixed, ensure it's visible */
+.site-announcement {
+    position: sticky;
+    /* or 'fixed' if you’re using fixed */
+    top: var(--nav-h);
+    /* keeps it below the navbar */
+    z-index: 1030;
+    /* just below Bootstrap's .navbar (z=1030) or above content */
+}
+
+/* If the banner is full-width and you want it above everything, you can bump it: */
+.navbar {
+    z-index: 1040;
+}
+
+/* navbar on top */
+
+
+
+
+
+
+
+
+
+
+
+/* NAVBAR (airy glass) */
+.navbar-glass {
+    background: rgba(255, 255, 255, .65);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+}
+
+.navbar-glass .nav-link {
+    position: relative;
+    color: #0a2540;
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: color .3s;
+}
+
+.navbar-glass .nav-link:hover {
+    color: #1fb6ff;
+}
+
+.navbar-glass .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #1fb6ff;
+    transition: all .3s;
+    transform: translateX(-50%);
+}
+
+.navbar-glass .nav-link:hover::after, .navbar-glass .nav-link.active::after {
+    width: 50%;
+}
+
+.navbar-brand span {
+    color: #0a2540;
+    font-size: 1.25rem;
+}
+
+/* Buttons */
+.btn-brand {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--brand-blue);
+    --bs-btn-border-color: var(--brand-blue);
+    --bs-btn-hover-bg: color-mix(in srgb, var(--brand-blue) 86%, #000);
+    --bs-btn-hover-border-color: color-mix(in srgb, var(--brand-blue) 86%, #000);
+}
+
+.btn-outline-brand {
+    --bs-btn-color: var(--brand-blue);
+    --bs-btn-border-color: var(--brand-blue);
+    --bs-btn-hover-bg: var(--brand-blue);
+    --bs-btn-hover-color: #fff;
+}
+
+/* Spacing helpers */
+.section-pad {
+    padding: 74px 0;
+}
+
+/* Make fixed navbar not cover anchors */
+section, header {
+    scroll-margin-top: 84px;
+}
+
+/* HERO asymmetric layout */
+.hero {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(100deg, var(--brand-deep) 0 46%, transparent 46%),
+        radial-gradient(1100px 620px at 92% -8%, #E9F6FF 0%, #F5FBFF 55%, #FFFFFF 100%);
+    padding-top: 120px;
+    /* avoid overlap under fixed nav */
+}
+
+.eyebrow {
+    display: inline-block;
+    padding: .35rem .75rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .18);
+    color: #e9f6ff;
+    font-weight: 600;
+    margin-bottom: .75rem;
+}
+
+.text-brand-accent {
+    color: #2b7cff;
+}
+
+.hero .display-5 {
+    color: #eaf3ff;
+}
+
+.hero-sub {
+    color: #d6e9ff;
+}
+
+.hero-list {
+    color: #cfe3ff;
+}
+
+.hero-visual {
+    background: url("assets/ph3.png") center center / cover no-repeat;
+    width: 100%;
+    min-height: 400px;
+    /* adjust for mobile */
+    border-radius: 0;
+    /* remove white rounded corners */
+}
+
+.hero-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 18px;
+    object-fit: cover;
+    min-height: 360px;
+}
+
+.hero-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(13, 59, 102, .88);
+    color: #fff;
+    font-size: .9rem;
+    padding: .5rem .75rem;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.badge-group {
+    margin-top: .25rem;
+}
+
+.wave-bottom {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    opacity: .35;
+}
+
+.wave-bottom path {
+    fill: var(--aqua-16);
+}
+
+/* bubbles */
+.bubbles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.bubbles span {
+    position: absolute;
+    bottom: -60px;
+    left: 15%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(31, 182, 255, .25);
+    box-shadow: 0 0 0 2px rgba(31, 182, 255, .15);
+    animation: floatUp 14s linear infinite;
+}
+
+.bubbles span:nth-child(2) {
+    left: 35%;
+    width: 12px;
+    height: 12px;
+    animation-duration: 16s;
+}
+
+.bubbles span:nth-child(3) {
+    left: 55%;
+    width: 9px;
+    height: 9px;
+    animation-duration: 18s;
+}
+
+.bubbles span:nth-child(4) {
+    left: 75%;
+    width: 13px;
+    height: 13px;
+    animation-duration: 15s;
+}
+
+.bubbles span:nth-child(5) {
+    left: 88%;
+    width: 11px;
+    height: 11px;
+    animation-duration: 17s;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .7;
+    }
+
+    100% {
+        transform: translateY(-110vh) translateX(-10px);
+        opacity: 0;
+    }
+}
+
+/* BENEFIT tiles */
+.bg-tint {
+    background-color: rgba(232, 248, 255, .55);
+}
+
+.tile {
+    background: #fff;
+    border: 1px solid rgba(10, 37, 64, .06);
+    border-radius: 16px;
+    padding: 22px;
+    height: 100%;
+    box-shadow: 0 8px 26px rgba(7, 55, 115, .06);
+    transition: .25s transform, .25s box-shadow;
+}
+
+.tile i {
+    font-size: 28px;
+    color: var(--brand-deep);
+}
+
+.tile h6 {
+    margin: 10px 0 6px;
+    color: var(--brand-blue);
+}
+
+.tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px rgba(7, 55, 115, .12);
+}
+
+/* MODELS grid */
+.product-card.card {
+    border: 1px solid rgba(10, 37, 64, .06);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: .25s transform, .25s box-shadow;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(7, 55, 115, .14);
+}
+
+.product-card .price {
+    color: var(--brand-blue);
+    font-weight: 700;
+}
+
+.badge-feature {
+    background: rgba(31, 182, 255, .12);
+    color: var(--brand-blue);
+}
+
+/* HOW media + steps */
+
+.hero-visual img {
+    width: 100%;
+    height: auto;
+    /* keep proportions */
+    object-fit: contain !important;
+    /* show whole image */
+    object-position: center;
+    /* center it */
+}
+
+.media-frame img {
+    width: 100%;
+    height: auto;
+    object-fit: contain !important;
+    object-position: center;
+}
+
+
+.steps .step {
+    background: #fff;
+    border: 1px solid rgba(10, 37, 64, .06);
+    border-radius: 14px;
+    padding: .75rem .9rem;
+    margin-bottom: .6rem;
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    box-shadow: 0 8px 22px rgba(7, 55, 115, .06);
+}
+
+.steps .step span {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    flex: 0 0 30px;
+    background: var(--aqua-16);
+    color: var(--brand-blue);
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+}
+
+/* QUOTES */
+.quote {
+    background: #fff;
+    border: 1px solid rgba(10, 37, 64, .08);
+    border-radius: 16px;
+    padding: 20px;
+    font-style: italic;
+    box-shadow: 0 12px 30px rgba(7, 55, 115, .08);
+}
+
+.quote footer {
+    font-style: normal;
+    margin-top: 8px;
+    color: #4b5b6a;
+}
+
+/* CONTACT */
+.contact-card {
+    background: linear-gradient(135deg, var(--brand-deep) 0%, #1470b3 100%);
+    color: #fff;
+    border-radius: 20px;
+    padding: 26px;
+    box-shadow: 0 14px 40px rgba(7, 55, 115, .18);
+}
+
+.contact-card a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Simple reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: .6s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 {
+    transition-delay: .12s;
+}
+
+.delay-2 {
+    transition-delay: .24s;
+}
+
+.delay-3 {
+    transition-delay: .36s;
+}
+
+.delay-4 {
+    transition-delay: .48s;
+}
+
+/* Mobile adjustments */
+@media (max-width: 991.98px) {
+    .hero {
+        background:
+            linear-gradient(180deg, var(--brand-deep) 0 56%, transparent 56%),
+            radial-gradient(1100px 620px at 92% -8%, #E9F6FF 0%, #F5FBFF 55%, #FFFFFF 100%);
+        padding-top: 100px;
+    }
+
+    .section-pad {
+        padding: 58px 0;
+    }
+
+}
+
+
+/* Fix text contrast for mobile */
+@media (max-width: 767px) {
+
+    .hero h1,
+    .hero p,
+    .hero .eyebrow,
+    .hero ul li {
+        color: #0a2540 !important;
+        /* dark navy */
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+        /* subtle shadow for visibility */
+    }
+
+    .hero .btn-brand,
+    .hero .btn-outline-brand {
+        font-size: 1rem;
+        padding: 0.65rem 1rem;
+    }
+}
+
+/* --- Hero image: show full picture on small screens --- */
+/* Hero image fix for small screens */
+@media (max-width: 576px) {
+    .hero-visual {
+        background: url("assets/phblue2.png") center center / contain no-repeat;
+        width: 100%;
+        min-height: 400px;
+        /* shrink height so text is closer */
+
+    }
+}

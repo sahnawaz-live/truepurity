@@ -1,0 +1,21 @@
+{
+    "name": "true-purity-payments",
+    "version": "1.0.0",
+    "description": "Minimal Razorpay backend for True Purity order page",
+    "main": "server.js",
+    "type": "commonjs",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node --watch server.js"
+    },
+    "dependencies": {
+        "bcrypt": "^6.0.0",
+        "better-sqlite3": "^12.2.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "google-auth-library": "^10.3.0",
+        "jsonwebtoken": "^9.0.2",
+        "razorpay": "^2.9.4"
+    }
+}

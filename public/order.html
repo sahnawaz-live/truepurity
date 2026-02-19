@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order • True Purity</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #f6fbff;
+        }
+
+        .order-card {
+            background: #fff;
+            border: 1px solid rgba(10, 37, 64, .08);
+            border-radius: 16px;
+            box-shadow: 0 10px 28px rgba(7, 55, 115, .08);
+        }
+
+        .summary {
+            background: #0D3B66;
+            color: #fff;
+            border-radius: 16px;
+        }
+
+        .summary small {
+            opacity: .85;
+        }
+
+        .rup {
+            font-weight: 800;
+        }
+    </style>
+</head>
+
+<body class="py-4">
+
+    <div class="container">
+        <div class="mb-4">
+            <a href="index.html#models" class="text-decoration-none">&larr; Back to Products</a>
+        </div>
+
+        <div class="row g-4">
+            <!-- Left: form -->
+            <div class="col-lg-7">
+                <div class="p-4 order-card">
+                    <h3 class="fw-bold mb-3">Order Details</h3>
+
+                    <form id="orderForm" class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Model</label>
+                                <input class="form-control" name="model" readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Variant</label>
+                                <input class="form-control" name="variant" readonly>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Unit Price (₹)</label>
+                                <input class="form-control" name="price" readonly>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Quantity</label>
+                                <input class="form-control" type="number" name="qty" min="1" value="1" required>
+                                <div class="invalid-feedback">Enter quantity (min 1)</div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Total (₹)</label>
+                                <input class="form-control" name="total" readonly>
+                            </div>
+
+                            <div class="col-12">
+                                <hr>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Full Name</label>
+                                <input class="form-control" name="name" required>
+                                <div class="invalid-feedback">Please enter your name.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Mobile (WhatsApp)</label>
+                                <input class="form-control" name="phone" pattern="[0-9]{10}"
+                                    placeholder="10-digit number" required>
+                                <div class="invalid-feedback">Enter a valid 10-digit mobile.</div>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="form-label">Address</label>
+                                <input class="form-control" name="address" required>
+                                <div class="invalid-feedback">Please enter your address.</div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">City</label>
+                                <input class="form-control" name="city" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Pincode</label>
+                                <input class="form-control" name="pincode" pattern="[0-9]{6}" required>
+                                <div class="invalid-feedback">Enter a valid 6-digit pincode.</div>
+                            </div>
+
+                            <!-- Honeypot -->
+                            <input type="text" name="company" class="d-none" autocomplete="off">
+
+                            <div class="col-12 d-grid gap-2">
+                                <!-- Razorpay -->
+                                <button id="rzpBtn" class="btn btn-success btn-lg" type="button">
+                                    <i class="bi bi-credit-card me-1"></i> Pay via Razorpay (UPI / Cards / NetBanking)
+                                </button>
+
+                                <!-- COD -->
+                                <button id="codBtn" class="btn btn-outline-primary btn-lg" type="button">
+                                    <i class="bi bi-box-seam me-1"></i> Cash / Card on Delivery (Confirm Order)
+                                </button>
+                            </div>
+
+                            <p class="small text-muted mt-2 mb-0">
+                                By proceeding, you agree to our standard terms. After online payment or COD
+                                confirmation, we will confirm your order on WhatsApp.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right: summary (QR removed) -->
+            <div class="col-lg-5">
+                <div class="p-4 summary h-100">
+                    <h4 class="fw-bold">Summary</h4>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <div><small>Model</small>
+                                <div class="fw-semibold" id="sumModel">–</div>
+                            </div>
+                            <div class="mt-2"><small>Variant</small>
+                                <div class="fw-semibold" id="sumVariant">–</div>
+                            </div>
+                            <div class="mt-2"><small>Quantity</small>
+                                <div class="fw-semibold" id="sumQty">1</div>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <div><small>Per Unit</small>
+                                <div class="fw-semibold">₹<span id="sumPrice">0</span></div>
+                            </div>
+                            <div class="mt-2"><small>Total</small>
+                                <div class="fs-4 rup">₹<span id="sumTotal">0</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="border-light">
+
+                    <div class="mt-3 small">
+                        Need help? WhatsApp us at
+                        <a class="text-white" href="https://wa.me/918100141714" target="_blank">+91 8100 1417 14</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Razorpay Checkout SDK -->
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+        ( () =>
+        {
+            // Always talk to your Node server
+            const API_BASE = ( location.port === '3001' ) ? location.origin : 'http://localhost:3001';
+
+            // ---- DOM refs (use your existing names/ids) ----
+            const form = document.getElementById( 'orderForm' );
+            const sumModel = document.getElementById( 'sumModel' );
+            const sumVar = document.getElementById( 'sumVariant' );
+            const sumQty = document.getElementById( 'sumQty' );
+            const sumPrice = document.getElementById( 'sumPrice' );
+            const sumTotal = document.getElementById( 'sumTotal' );
+            const rzpBtn = document.getElementById( 'rzpBtn' );
+            const codBtn = document.getElementById( 'codBtn' );
+
+            // ---- Parse incoming params from product cards ----
+            const params = new URLSearchParams( location.search );
+            const model = params.get( 'model' ) || '';
+            const variant = params.get( 'variant' ) || '';
+            const price = Number( params.get( 'price' ) || 0 );      // rupees
+
+            // ---- Pre-fill form + summary ----
+            form.model.value = model;
+            form.variant.value = variant;
+            form.price.value = price.toLocaleString( 'en-IN' );
+            form.qty.value = '1';
+            form.total.value = price.toLocaleString( 'en-IN' );
+
+            function updateTotals ()
+            {
+                const qty = Math.max( 1, parseInt( form.qty.value || '1', 10 ) );
+                const total = price * qty;
+
+                form.qty.value = qty;
+                form.total.value = total.toLocaleString( 'en-IN' );
+
+                sumModel.textContent = model || '–';
+                sumVar.textContent = variant || '–';
+                sumQty.textContent = qty;
+                sumPrice.textContent = price.toLocaleString( 'en-IN' );
+                sumTotal.textContent = total.toLocaleString( 'en-IN' );
+            }
+            form.qty.addEventListener( 'input', updateTotals );
+            updateTotals();
+
+            // ---- Basic validation + honeypot ----
+            function valid ()
+            {
+                if ( form.company && form.company.value.trim() !== '' ) return false; // bot
+                if ( !form.checkValidity() ) { form.classList.add( 'was-validated' ); return false; }
+                return true;
+            }
+            const goReview = ( id ) => location.href = `review.html?id=${ encodeURIComponent( id ) }`;
+
+            // =========================
+            // COD flow
+            // =========================
+            codBtn?.addEventListener( 'click', async () =>
+            {
+                if ( !valid() ) return;
+
+                const qty = parseInt( form.qty.value, 10 );
+                const total = price * qty;
+
+                const payload = {
+                    model, variant, price, qty, total,
+                    name: form.name.value.trim(),
+                    phone: form.phone.value.trim(),
+                    address: form.address.value.trim(),
+                    city: form.city.value.trim(),
+                    pincode: form.pincode.value.trim(),
+                    payment_mode: 'cod',
+                    status: 'cod'
+                };
+
+                try
+                {
+                    const r = await fetch( `${ API_BASE }/api/order`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify( payload )
+                    } );
+                    const j = await r.json();
+                    if ( j?.ok && j.id ) { goReview( j.id ); }
+                    else { alert( j?.error || 'Could not save order.' ); }
+                } catch ( e )
+                {
+                    console.error( 'cod save failed', e );
+                    alert( 'Could not save order.' );
+                }
+            } );
+
+            // =========================
+            // Razorpay flow
+            // =========================
+            rzpBtn?.addEventListener( 'click', async () =>
+            {
+                if ( !valid() ) return;
+
+                const qty = parseInt( form.qty.value, 10 );
+                const total = price * qty;         // rupees
+                const amount = total * 100;         // paise
+
+                // 1) Ask server to create a Razorpay order + row in DB
+                let create;
+                try
+                {
+                    const res = await fetch( `${ API_BASE }/api/create-order`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify( {
+                            productId: form.model.value || 'tp',
+                            amount, currency: 'INR',
+                            model: form.model.value, variant: form.variant.value,
+                            price, qty, total,
+                            name: form.name.value.trim(),
+                            phone: form.phone.value.trim(),
+                            address: form.address.value.trim(),
+                            city: form.city.value.trim(),
+                            pincode: form.pincode.value.trim()
+                        } )
+                    } );
+                    if ( !res.ok ) throw new Error( await res.text() );
+                    create = await res.json();
+                    if ( !create || !create.orderId || !create.keyId ) throw new Error( 'Order create failed' );
+                } catch ( e )
+                {
+                    console.error( 'create-order failed', e );
+                    alert( 'Unable to start payment. Please try again.' );
+                    return;
+                }
+
+                const LOCAL_DB_ID = create.id;
+                const RZP_ORDER_ID = create.orderId;
+
+                // 2) Poll fallback in case user leaves to UPI app
+                let poll, tries = 30;
+                const stopPoll = () => { if ( poll ) { clearInterval( poll ); poll = null; } };
+                const startPoll = () =>
+                {
+                    stopPoll();
+                    poll = setInterval( async () =>
+                    {
+                        try
+                        {
+                            const r = await fetch( `${ API_BASE }/api/orders/by-rp/${ encodeURIComponent( RZP_ORDER_ID ) }` );
+                            if ( r.ok )
+                            {
+                                const row = await r.json();
+                                if ( row && row.status === 'paid' ) { stopPoll(); goReview( row.id ); }
+                            }
+                        } catch { }
+                        if ( --tries <= 0 ) stopPoll();
+                    }, 1000 );
+                };
+                startPoll();
+
+                // 3) Open Razorpay Checkout
+                const rzp = new Razorpay( {
+                    key: create.keyId,
+                    amount: String( amount ),
+                    currency: 'INR',
+                    name: 'True Purity',
+                    description: `${ form.model.value } (${ form.variant.value }) x${ qty }`,
+                    order_id: RZP_ORDER_ID,
+                    prefill: {
+                        name: form.name.value || 'True Purity Customer',
+                        email: 'customer@example.com',
+                        contact: form.phone.value || '9999999999'
+                    },
+                    theme: { color: '#0A2540' },
+
+                    // Primary verify: AJAX
+                    handler: async ( response ) =>
+                    {
+                        try
+                        {
+                            const verify = await fetch( `${ API_BASE }/api/verify-payment`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify( response )
+                            } ).then( r => r.json() );
+                            if ( verify?.ok && verify?.redirect ) { stopPoll(); location.href = verify.redirect; return; }
+                            stopPoll(); goReview( LOCAL_DB_ID );
+                        } catch ( e )
+                        {
+                            console.error( 'verify-payment failed', e );
+                            stopPoll(); goReview( LOCAL_DB_ID );
+                        }
+                    },
+
+                    // Secondary verify: Razorpay server POST → our /api/verify-return
+                    redirect: true,
+                    callback_url: `${ API_BASE }/api/verify-return`,
+
+                    modal: { ondismiss: function () {/* leave poll for a bit */ } }
+                } );
+
+                rzp.on( 'payment.failed', ( resp ) =>
+                {
+                    stopPoll();
+                    alert( 'Payment failed: ' + ( resp?.error?.description || 'Unknown error' ) );
+                } );
+
+                rzp.open();
+            } );
+        } )();
+    </script>
+
+</body>
+
+</html>

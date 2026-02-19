@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Orders • True Purity</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #f6fbff;
+        }
+
+        .badge-status {
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+
+<body class="pb-5">
+    <!-- reuse your navbar (same as index) -->
+    <nav class="navbar navbar-expand-lg navbar-glass">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="assets/logo.png" alt="True Purity" class="me-2"
+                    style="width:40px;height:40px;object-fit:cover;border-radius:8px;">
+                <span class="fw-bold">True Purity</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html#models">Products</a></li>
+                    <li class="nav-item dropdown" id="authSlot"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <h3 class="fw-bold mb-3">My Orders</h3>
+        <div id="ordersWrap" class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Order #</th>
+                        <th>Item</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                        <th>Placed</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="ordersBody">
+                    <tr>
+                        <td colspan="8" class="text-muted">Loading…</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        ( async () =>
+        {
+            const API_BASE = window.location.origin;
+            const tb = document.getElementById( 'ordersBody' );
+
+            function getToken () { return localStorage.getItem( 'tp_jwt' ) || ''; }
+
+            function money ( n ) { return Number( n || 0 ).toLocaleString( 'en-IN' ); }
+
+            function rowHTML ( o )
+            {
+                const canCancel = ( o.status === 'cod' || o.status === 'created' );
+                const payLabel = ( o.status === 'paid' )
+                    ? 'Online (Razorpay) — Paid'
+                    : ( o.payment_mode || '' ).toUpperCase();
+
+                return `<tr data-id="${ o.id }">
+        <td><a href="review.html?id=${ o.id }" class="text-decoration-none"> ${ o.order_no || ( 'TP' + o.id ) } </a></td>
+        <td>${ o.model } <div class="text-muted small">${ o.variant || '' }</div></td>
+        <td>${ o.qty }</td>
+        <td>₹${ money( o.total ) }</td>
+        <td>${ payLabel }</td>
+        <td><span class="badge bg-${ o.status === 'paid' ? 'success' : o.status === 'cancelled' ? 'secondary' : 'warning' } badge-status">${ o.status }</span></td>
+        <td class="text-muted small">${ o.created_at || '' }</td>
+        <td class="text-end">
+          ${ canCancel ? `<button class="btn btn-sm btn-outline-danger cancelBtn">Cancel</button>` : '' }
+        </td>
+      </tr>`;
+            }
+
+            async function load ()
+            {
+                tb.innerHTML = `<tr><td colspan="8" class="text-muted">Loading…</td></tr>`;
+                const r = await fetch( `${ API_BASE }/api/my/orders`, {
+                    headers: { Authorization: `Bearer ${ getToken() }` }
+                } );
+                if ( r.status === 401 ) { tb.innerHTML = `<tr><td colspan="8">Please <a href="index.html" data-bs-toggle="modal" data-bs-target="#loginModal">login</a>.</td></tr>`; return; }
+                const data = await r.json();
+                if ( !Array.isArray( data ) || data.length === 0 )
+                {
+                    tb.innerHTML = `<tr><td colspan="8" class="text-muted">No orders yet.</td></tr>`;
+                    return;
+                }
+                tb.innerHTML = data.map( rowHTML ).join( '' );
+            }
+
+            tb.addEventListener( 'click', async ( e ) =>
+            {
+                const btn = e.target.closest( '.cancelBtn' );
+                if ( !btn ) return;
+                const tr = btn.closest( 'tr' );
+                const id = tr?.dataset?.id;
+                if ( !id ) return;
+                if ( !confirm( 'Cancel this order?' ) ) return;
+
+                const r = await fetch( `${ API_BASE }/api/orders/${ id }/cancel`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${ getToken() }`
+                    }
+                } );
+                const res = await r.json();
+                if ( !r.ok ) { alert( res?.error || 'Unable to cancel' ); return; }
+                await load();
+            } );
+
+            await load();
+        } )();
+    </script>
+</body>
+
+</html>
