@@ -1,80 +1,81 @@
+/* ===== IMPORTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ===== DESIGN TOKENS ===== */
 :root {
     --brand-blue: #0A2540;
     --brand-deep: #0D3B66;
     --brand-aqua: #1FB6FF;
+    --brand-accent: #2b7cff;
     --text: #1b2b3a;
+    --text-muted: #5a6b7d;
     --aqua-10: color-mix(in srgb, var(--brand-aqua) 10%, #fff);
     --aqua-16: color-mix(in srgb, var(--brand-aqua) 16%, #fff);
+    --nav-h: 64px;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+    --shadow-sm: 0 2px 8px rgba(7, 55, 115, .06);
+    --shadow-md: 0 8px 26px rgba(7, 55, 115, .08);
+    --shadow-lg: 0 16px 48px rgba(7, 55, 115, .12);
+    --shadow-glow: 0 8px 32px rgba(31, 182, 255, .15);
+    --transition: .3s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* ===== BASE ===== */
+html {
+    scroll-behavior: smooth;
 }
 
 html, body {
-    height: 100%
+    height: 100%;
 }
 
 body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: var(--text);
     background:
         radial-gradient(800px 420px at 110% -10%, var(--aqua-10) 0%, transparent 60%),
         radial-gradient(680px 360px at -10% 0%, var(--aqua-16) 0%, transparent 62%),
         linear-gradient(180deg, #F0FAFF 0%, #FFFFFF 100%);
     background-attachment: fixed;
-}
-
-
-/* Adjust if your navbar is taller/shorter */
-:root {
-    --nav-h: 64px;
-}
-
-/* Reserve space for the fixed navbar */
-body {
     padding-top: var(--nav-h);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* If your announcement bar is position:sticky or fixed, ensure it's visible */
+/* ===== ANNOUNCEMENT BANNER ===== */
 .site-announcement {
     position: sticky;
-    /* or 'fixed' if you’re using fixed */
     top: var(--nav-h);
-    /* keeps it below the navbar */
     z-index: 1030;
-    /* just below Bootstrap's .navbar (z=1030) or above content */
 }
 
-/* If the banner is full-width and you want it above everything, you can bump it: */
+/* ===== NAVBAR (frosted glass) ===== */
 .navbar {
     z-index: 1040;
 }
 
-/* navbar on top */
-
-
-
-
-
-
-
-
-
-
-
-/* NAVBAR (airy glass) */
 .navbar-glass {
-    background: rgba(255, 255, 255, .65);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    background: rgba(255, 255, 255, .72);
+    backdrop-filter: blur(16px) saturate(1.8);
+    -webkit-backdrop-filter: blur(16px) saturate(1.8);
+    box-shadow: 0 1px 0 rgba(10, 37, 64, .06), 0 4px 16px rgba(0, 0, 0, .05);
+    transition: background var(--transition), box-shadow var(--transition);
 }
 
 .navbar-glass .nav-link {
     position: relative;
-    color: #0a2540;
+    color: var(--brand-blue);
     font-weight: 500;
+    font-size: .925rem;
     padding: 8px 16px;
-    transition: color .3s;
+    transition: color var(--transition);
+    letter-spacing: -.01em;
 }
 
 .navbar-glass .nav-link:hover {
-    color: #1fb6ff;
+    color: var(--brand-aqua);
 }
 
 .navbar-glass .nav-link::after {
@@ -84,27 +85,43 @@ body {
     bottom: 0;
     width: 0;
     height: 2px;
-    background: #1fb6ff;
-    transition: all .3s;
+    background: var(--brand-aqua);
+    transition: all var(--transition);
     transform: translateX(-50%);
+    border-radius: 2px;
 }
 
-.navbar-glass .nav-link:hover::after, .navbar-glass .nav-link.active::after {
+.navbar-glass .nav-link:hover::after,
+.navbar-glass .nav-link.active::after {
     width: 50%;
 }
 
 .navbar-brand span {
-    color: #0a2540;
+    color: var(--brand-blue);
     font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -.02em;
 }
 
-/* Buttons */
+/* ===== BUTTONS ===== */
+.btn {
+    font-weight: 600;
+    letter-spacing: -.01em;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+}
+
 .btn-brand {
     --bs-btn-color: #fff;
     --bs-btn-bg: var(--brand-blue);
     --bs-btn-border-color: var(--brand-blue);
     --bs-btn-hover-bg: color-mix(in srgb, var(--brand-blue) 86%, #000);
     --bs-btn-hover-border-color: color-mix(in srgb, var(--brand-blue) 86%, #000);
+}
+
+.btn-brand:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(10, 37, 64, .25);
 }
 
 .btn-outline-brand {
@@ -114,17 +131,21 @@ body {
     --bs-btn-hover-color: #fff;
 }
 
-/* Spacing helpers */
-.section-pad {
-    padding: 74px 0;
+.btn-outline-brand:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(10, 37, 64, .2);
 }
 
-/* Make fixed navbar not cover anchors */
+/* ===== SPACING ===== */
+.section-pad {
+    padding: 80px 0;
+}
+
 section, header {
     scroll-margin-top: 84px;
 }
 
-/* HERO asymmetric layout */
+/* ===== HERO ===== */
 .hero {
     position: relative;
     overflow: hidden;
@@ -132,29 +153,21 @@ section, header {
         linear-gradient(100deg, var(--brand-deep) 0 46%, transparent 46%),
         radial-gradient(1100px 620px at 92% -8%, #E9F6FF 0%, #F5FBFF 55%, #FFFFFF 100%);
     padding-top: 120px;
-    /* avoid overlap under fixed nav */
-}
-
-.eyebrow {
-    display: inline-block;
-    padding: .35rem .75rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, .18);
-    color: #e9f6ff;
-    font-weight: 600;
-    margin-bottom: .75rem;
 }
 
 .text-brand-accent {
-    color: #2b7cff;
+    color: var(--brand-accent);
 }
 
 .hero .display-5 {
     color: #eaf3ff;
+    letter-spacing: -.03em;
+    line-height: 1.1;
 }
 
 .hero-sub {
     color: #d6e9ff;
+    line-height: 1.6;
 }
 
 .hero-list {
@@ -165,17 +178,16 @@ section, header {
     background: url("assets/ph3.png") center center / cover no-repeat;
     width: 100%;
     min-height: 400px;
-    /* adjust for mobile */
     border-radius: 0;
-    /* remove white rounded corners */
 }
 
 .hero-visual img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 18px;
-    object-fit: cover;
+    border-radius: var(--radius-lg);
+    object-fit: contain !important;
+    object-position: center;
     min-height: 360px;
 }
 
@@ -191,12 +203,33 @@ section, header {
     display: flex;
     align-items: center;
     gap: .5rem;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
 
 .badge-group {
     margin-top: .25rem;
 }
 
+.badge-group .badge {
+    background: rgba(255, 255, 255, .15);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, .2);
+    font-weight: 500;
+}
+
+.eyebrow {
+    display: inline-block;
+    padding: .35rem .75rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .18);
+    color: #e9f6ff;
+    font-weight: 600;
+    margin-bottom: .75rem;
+}
+
+/* Wave & bubbles */
 .wave-bottom {
     position: absolute;
     bottom: -1px;
@@ -210,7 +243,6 @@ section, header {
     fill: var(--aqua-16);
 }
 
-/* bubbles */
 .bubbles {
     position: absolute;
     inset: 0;
@@ -224,96 +256,88 @@ section, header {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: rgba(31, 182, 255, .25);
-    box-shadow: 0 0 0 2px rgba(31, 182, 255, .15);
+    background: rgba(31, 182, 255, .2);
+    box-shadow: 0 0 0 2px rgba(31, 182, 255, .1);
     animation: floatUp 14s linear infinite;
 }
 
-.bubbles span:nth-child(2) {
-    left: 35%;
-    width: 12px;
-    height: 12px;
-    animation-duration: 16s;
-}
-
-.bubbles span:nth-child(3) {
-    left: 55%;
-    width: 9px;
-    height: 9px;
-    animation-duration: 18s;
-}
-
-.bubbles span:nth-child(4) {
-    left: 75%;
-    width: 13px;
-    height: 13px;
-    animation-duration: 15s;
-}
-
-.bubbles span:nth-child(5) {
-    left: 88%;
-    width: 11px;
-    height: 11px;
-    animation-duration: 17s;
-}
+.bubbles span:nth-child(2) { left: 35%; width: 12px; height: 12px; animation-duration: 16s; }
+.bubbles span:nth-child(3) { left: 55%; width: 9px; height: 9px; animation-duration: 18s; }
+.bubbles span:nth-child(4) { left: 75%; width: 13px; height: 13px; animation-duration: 15s; }
+.bubbles span:nth-child(5) { left: 88%; width: 11px; height: 11px; animation-duration: 17s; }
 
 @keyframes floatUp {
-    0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-    }
-
-    10% {
-        opacity: .7;
-    }
-
-    100% {
-        transform: translateY(-110vh) translateX(-10px);
-        opacity: 0;
-    }
+    0%   { transform: translateY(0) translateX(0); opacity: 0; }
+    10%  { opacity: .6; }
+    100% { transform: translateY(-110vh) translateX(-10px); opacity: 0; }
 }
 
-/* BENEFIT tiles */
+/* ===== BENEFIT TILES ===== */
 .bg-tint {
-    background-color: rgba(232, 248, 255, .55);
+    background-color: rgba(232, 248, 255, .45);
 }
 
 .tile {
     background: #fff;
-    border: 1px solid rgba(10, 37, 64, .06);
-    border-radius: 16px;
-    padding: 22px;
+    border: 1px solid rgba(10, 37, 64, .05);
+    border-radius: var(--radius-md);
+    padding: 24px;
     height: 100%;
-    box-shadow: 0 8px 26px rgba(7, 55, 115, .06);
-    transition: .25s transform, .25s box-shadow;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .tile i {
     font-size: 28px;
-    color: var(--brand-deep);
+    color: var(--brand-aqua);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(31, 182, 255, .1), rgba(31, 182, 255, .05));
 }
 
 .tile h6 {
-    margin: 10px 0 6px;
+    margin: 14px 0 8px;
     color: var(--brand-blue);
+    font-weight: 700;
+    font-size: .95rem;
+}
+
+.tile p {
+    color: var(--text-muted);
+    font-size: .9rem;
+    line-height: 1.6;
+    margin-bottom: 0;
 }
 
 .tile:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 36px rgba(7, 55, 115, .12);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
 
-/* MODELS grid */
+/* ===== PRODUCT CARDS ===== */
 .product-card.card {
-    border: 1px solid rgba(10, 37, 64, .06);
-    border-radius: 16px;
+    border: 1px solid rgba(10, 37, 64, .05);
+    border-radius: var(--radius-md);
     overflow: hidden;
-    transition: .25s transform, .25s box-shadow;
+    transition: transform var(--transition), box-shadow var(--transition);
+    background: #fff;
 }
 
 .product-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(7, 55, 115, .14);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.product-card .card-img-top {
+    transition: transform .4s ease;
+}
+
+.product-card:hover .card-img-top {
+    transform: scale(1.03);
 }
 
 .product-card .price {
@@ -326,85 +350,140 @@ section, header {
     color: var(--brand-blue);
 }
 
-/* HOW media + steps */
-
-.hero-visual img {
-    width: 100%;
-    height: auto;
-    /* keep proportions */
-    object-fit: contain !important;
-    /* show whole image */
-    object-position: center;
-    /* center it */
-}
-
+/* ===== HOW IT WORKS ===== */
 .media-frame img {
     width: 100%;
     height: auto;
     object-fit: contain !important;
     object-position: center;
+    border-radius: var(--radius-md);
 }
-
 
 .steps .step {
     background: #fff;
-    border: 1px solid rgba(10, 37, 64, .06);
+    border: 1px solid rgba(10, 37, 64, .05);
     border-radius: 14px;
-    padding: .75rem .9rem;
+    padding: .75rem 1rem;
     margin-bottom: .6rem;
     display: flex;
     align-items: center;
-    gap: .65rem;
-    box-shadow: 0 8px 22px rgba(7, 55, 115, .06);
+    gap: .75rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.steps .step:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
 }
 
 .steps .step span {
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    flex: 0 0 30px;
-    background: var(--aqua-16);
-    color: var(--brand-blue);
+    flex: 0 0 34px;
+    background: linear-gradient(135deg, var(--brand-aqua), color-mix(in srgb, var(--brand-aqua) 70%, var(--brand-blue)));
+    color: #fff;
     display: grid;
     place-items: center;
     font-weight: 700;
+    font-size: .85rem;
 }
 
-/* QUOTES */
+/* ===== TESTIMONIALS ===== */
 .quote {
     background: #fff;
-    border: 1px solid rgba(10, 37, 64, .08);
-    border-radius: 16px;
-    padding: 20px;
+    border: 1px solid rgba(10, 37, 64, .05);
+    border-radius: var(--radius-md);
+    padding: 24px;
     font-style: italic;
-    box-shadow: 0 12px 30px rgba(7, 55, 115, .08);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition), box-shadow var(--transition);
+    position: relative;
+    line-height: 1.6;
+    font-size: .95rem;
+    color: var(--text);
+}
+
+.quote::before {
+    content: '\201C';
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 3rem;
+    color: var(--brand-aqua);
+    opacity: .2;
+    font-style: normal;
+    line-height: 1;
+    font-family: Georgia, serif;
+}
+
+.quote:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
 }
 
 .quote footer {
     font-style: normal;
-    margin-top: 8px;
-    color: #4b5b6a;
+    margin-top: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: .85rem;
 }
 
-/* CONTACT */
+/* ===== CONTACT ===== */
 .contact-card {
     background: linear-gradient(135deg, var(--brand-deep) 0%, #1470b3 100%);
     color: #fff;
-    border-radius: 20px;
-    padding: 26px;
+    border-radius: var(--radius-lg);
+    padding: 28px;
     box-shadow: 0 14px 40px rgba(7, 55, 115, .18);
 }
 
 .contact-card a {
     color: #fff;
     text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, .4);
+    text-underline-offset: 2px;
+    transition: text-decoration-color var(--transition);
 }
 
-/* Simple reveal animation */
+.contact-card a:hover {
+    text-decoration-color: #fff;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: rgba(255, 255, 255, .7);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+footer a {
+    color: var(--text-muted);
+    transition: color var(--transition);
+}
+
+footer a:hover {
+    color: var(--brand-aqua);
+}
+
+.footer-logo {
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.footer-iso {
+    height: 28px;
+}
+
+/* ===== REVEAL ANIMATION ===== */
 .reveal {
     opacity: 0;
-    transform: translateY(14px);
-    transition: .6s ease;
+    transform: translateY(20px);
+    transition: opacity .7s cubic-bezier(.4, 0, .2, 1), transform .7s cubic-bezier(.4, 0, .2, 1);
 }
 
 .reveal.show {
@@ -412,23 +491,33 @@ section, header {
     transform: translateY(0);
 }
 
-.delay-1 {
-    transition-delay: .12s;
+.delay-1 { transition-delay: .1s; }
+.delay-2 { transition-delay: .2s; }
+.delay-3 { transition-delay: .3s; }
+.delay-4 { transition-delay: .4s; }
+
+/* ===== FORM CONTROLS ===== */
+.form-control,
+.form-select {
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(10, 37, 64, .12);
+    transition: border-color var(--transition), box-shadow var(--transition);
 }
 
-.delay-2 {
-    transition-delay: .24s;
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--brand-aqua);
+    box-shadow: 0 0 0 3px rgba(31, 182, 255, .15);
 }
 
-.delay-3 {
-    transition-delay: .36s;
+/* ===== CARDS (global polish) ===== */
+.card {
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(10, 37, 64, .06);
+    transition: box-shadow var(--transition);
 }
 
-.delay-4 {
-    transition-delay: .48s;
-}
-
-/* Mobile adjustments */
+/* ===== MOBILE ===== */
 @media (max-width: 991.98px) {
     .hero {
         background:
@@ -440,21 +529,15 @@ section, header {
     .section-pad {
         padding: 58px 0;
     }
-
 }
 
-
-/* Fix text contrast for mobile */
 @media (max-width: 767px) {
-
     .hero h1,
     .hero p,
     .hero .eyebrow,
     .hero ul li {
         color: #0a2540 !important;
-        /* dark navy */
         text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
-        /* subtle shadow for visibility */
     }
 
     .hero .btn-brand,
@@ -464,14 +547,10 @@ section, header {
     }
 }
 
-/* --- Hero image: show full picture on small screens --- */
-/* Hero image fix for small screens */
 @media (max-width: 576px) {
     .hero-visual {
         background: url("assets/phblue2.png") center center / contain no-repeat;
         width: 100%;
         min-height: 400px;
-        /* shrink height so text is closer */
-
     }
 }
